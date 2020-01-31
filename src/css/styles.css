@@ -22,6 +22,8 @@ body {
     .game .header{
         height: 20vmin;
         width: 80vmin;
+        padding: 2vmin;
+        font-size: 9vmin;
         background-color: #2B5278;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;

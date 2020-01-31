@@ -1,41 +1,56 @@
-var cvs = document.getElementById('canvas');
-var ctx = cvs.getContext('2d');
-
-ctx.font="30px `Times New Roman`";
-
-var startXposArea = 340;
-var startYposArea = 150;
-
-var gameArea;
-var verticalLines = [];
-var horizontalLines = []
-
-function draw(){
-
-    //Игровое поле
-    ctx.strokeStyle = "#2B5278";
-    ctx.strokeWidth = '10px'
-    gameArea = ctx.strokeRect(startXposArea, startYposArea, 
-                                cvs.width-680, cvs.height-300);
-
-    //Вертикальные линии
-
-    for( let i = 0; i < 3; i++){
-        verticalLines[i] = ctx.strokeRect(startXposArea + ( (i + 1) * 150), startYposArea, 
-                                            1, cvs.height-300);
+let createAndAppend = function({className, parentElement, value}, tag = 'div'){
+    let element = document.createElement(tag);
+    element.className = className;
+    if (value){
+        element.innerHTML = value;
     }
-    //Горизонтальные линии
-    for( let i = 0; i < 3; i++){
-        horizontalLines[i] = ctx.strokeRect(startXposArea, startYposArea + ( (i + 1) * 150), 
-                                            cvs.width-680, 1);
-    }
+    parentElement.appendChild(element);
 
-    // ctx.beginPath();
-    // ctx.moveTo(0,0);
-    // ctx.lineWidth = 15;
-    // ctx.lineTo(100, 100);
-    // ctx.stroke();
-
+    return element;
 }
 
-draw();
+class Game {
+    constructor(parentElement, size = 4) {
+        let gameFieldElement = createAndAppend({
+            className: 'game',
+            parentElement
+        });
+
+        let headerElement = createAndAppend({
+            className: 'header',
+            parentElement: gameFieldElement
+        });
+
+        this.score = 1234;
+
+        headerElement.innerHTML = 'Score:' + this.score;
+
+        let fieldElement = createAndAppend({
+            className: 'field',
+            parentElement: gameFieldElement
+        });
+
+        for (let i = 0; i < size; i++){
+            for (let k = 0; k < size; k++){
+                let cellElement = createAndAppend({
+                    className: 'cell',
+                    parentElement: fieldElement
+                });
+
+                let spanCellElement = createAndAppend({
+                    className: 'cell-span',
+                    parentElement: cellElement
+                });
+
+                
+                if (Math.random() > 0.8){
+                    spanCellElement.innerHTML = Math.random() > 0.5 ? 4 : 2;
+                }
+                
+                cellElement.appendChild(spanCellElement);
+
+
+            }
+        }
+    }
+}
