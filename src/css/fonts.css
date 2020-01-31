@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'NK126'; 
+    src: url('../assets/fonts/13054.otf') format('opentype'); 
+}
+
+@font-face {
+    font-family: 'Geostar'; 
+    src: url('../assets/fonts/Geostar/Geostar-Regular.ttf') format('truetype'); 
+}
+
+@font-face {
+    font-family: 'Audiowide'; 
+    src: url('../assets/fonts/Audiowide/Audiowide-Regular.ttf') format('truetype'); 
+}
+
+@font-face {
+    font-family: 'PressStart'; 
+    src: url('../assets/fonts/Press_Start_2P/PressStart2P-Regular.ttf') format('truetype'); 
+}
+
+@font-face {
+    font-family: 'Digital'; 
+    src: url('../assets/fonts/digital-7/digital-7.ttf') format('truetype'); 
+}
