@@ -1,14 +1,3 @@
-let createAndAppend = function({className, parentElement, value}, tag = 'div'){
-    let element = document.createElement(tag);
-    element.className = className;
-    if (value){
-        element.innerHTML = value;
-    }
-    parentElement.appendChild(element);
-
-    return element;
-}
-
 class Game {
     constructor(parentElement, size = 4) {
         let gameFieldElement = createAndAppend({
@@ -37,18 +26,7 @@ class Game {
                     parentElement: fieldElement
                 });
 
-                let spanCellElement = createAndAppend({
-                    className: 'cell-span',
-                    parentElement: cellElement
-                });
-
-                
-                if (Math.random() > 0.8){
-                    spanCellElement.innerHTML = Math.random() > 0.5 ? 4 : 2;
-                }
-                
-                cellElement.appendChild(spanCellElement);
-
+                new CellText(cellElement);
 
             }
         }
