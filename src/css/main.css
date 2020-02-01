@@ -221,3 +221,14 @@ body {
                             0 0 3px 1px hsl(0, 0%, 100%) inset,
                             0 0 17px 9px hsl(330, 100%, 50%) inset;
             }
+            .game .field .cell .cell-text[data-number='4096']{
+                font-size: 6vmin;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(60, 100%, 50%);
+                color: rgb(255,255,0); 
+                border: 1px solid rgb(255,255,0);
+                box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
+                            0 0 6px 8px hsl(60, 100%, 50%),
+                            0 0 3px 1px hsl(0, 0%, 100%) inset,
+                            0 0 17px 9px hsl(60, 100%, 50%) inset;
+            }
