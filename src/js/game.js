@@ -1,6 +1,8 @@
 class Game {
     constructor(parentElement, size = 4) {
+        this.fieldSize = 80;
         this.size = size;
+        this.cellSize = (Math.floor(this.fieldSize / this.size) - 2)
 
         let gameFieldElement = createAndAppend({
             className: 'game',
@@ -21,9 +23,15 @@ class Game {
             parentElement: titleElement
         });
         let titleButtonElement = createAndAppend({
-            className: 'titleButton',
+            className: 'titleButtons',
             parentElement: titleElement
         });
+        this.titleButtonNewGameElement = createAndAppend({
+            className: 'titleButtonNewGame',
+            parentElement: titleButtonElement,
+            value : 'New Game'
+        }, 'button');
+
 
         let scoreElement = createAndAppend({
             className: 'score',
@@ -40,6 +48,7 @@ class Game {
 
         this.score = 0;
 
+        this.titleButtonNewGameElement.onclick = this.resetGame.bind(this);
         titleTextElement.innerHTML = '2048 NEON'
         scoreTextElement.innerHTML = 'Score ';
 
@@ -58,6 +67,9 @@ class Game {
                     className: 'cell',
                     parentElement: fieldElement
                 });
+
+                cellElement.style.width = this.cellSize + 'vmin';
+                cellElement.style.height = this.cellSize + 'vmin';
 
                 this.cell[i][k] = new CellText(cellElement, this);
             }
@@ -81,6 +93,25 @@ class Game {
             }
         }.bind(this));
 
+    }
+
+    spawnNumber(){
+        let emptyCellText = [];
+
+        for (let i = 0; i < this.cell.length; i++){
+            for (let k = 0; k < this.cell[i].length; k++){
+                if (!this.cell[i][k].value){
+                    emptyCellText.push(this.cell[i][k]);
+                }
+            }
+        }
+
+        if (emptyCellText.length != 0){
+            emptyCellText[randomInt(0, emptyCellText.length - 1)].spawn();
+        }
+        else{
+            alert('You Lose!')
+        }
     }
 
     resetGame(){
@@ -108,24 +139,6 @@ class Game {
         this.score += value;
     }
 
-    spawnNumber(){
-        let emptyCellText = [];
-
-        for (let i = 0; i < this.cell.length; i++){
-            for (let k = 0; k < this.cell[i].length; k++){
-                if (!this.cell[i][k].value){
-                    emptyCellText.push(this.cell[i][k]);
-                }
-            }
-        }
-
-        if (emptyCellText.length){
-            emptyCellText[randomInt(0, emptyCellText.length - 1)].spawn();
-        }
-        else{
-            alert('You Lose!')
-        }
-    }
 
     onCellTextMerge(CellText){
         

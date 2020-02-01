@@ -11,6 +11,9 @@ class CellText {
             parentElement: cellElement
         });
 
+        this.element.style.width = (this.game.cellSize - 3) + 'vmin';
+        this.element.style.height = (this.game.cellSize - 3) + 'vmin';
+
     }
 
     get value(){
@@ -55,6 +58,9 @@ class CellText {
     highlight(){
         this.element.className = 'cell-text highlight';
 
+        this.element.style.width = this.game.cellSize + 1 + 'vmin';
+        this.element.style.height = this.game.cellSize + 1 + 'vmin';
+
         let highlightTime = 100;
         let highlightStartTime = new Date();
         this.highlightStartTime = highlightStartTime;
@@ -63,6 +69,8 @@ class CellText {
         setTimeout(function(){
             if(highlightStartTime == this.highlightStartTime){
                 this.element.className = 'cell-text';
+                this.element.style.width = (this.game.cellSize - 3) + 'vmin';
+                this.element.style.height = (this.game.cellSize - 3) + 'vmin';
             } 
 
         }.bind(this), highlightTime)

@@ -43,11 +43,23 @@ body {
                 text-shadow: 0px 0px 7px white;
                 padding-left: 5vmin;
             }
-            .game .header .title .titleButton{
+            .game .header .title .titleButtons{
                 width: 24vmin;
-                background-color: #17212B;
-                border: white;
+                display: flex;
+                flex-direction: column;
+                font-family: 'Audiowide', Arial;
+                justify-content: center;
             }
+                .game .header .title .titleButtons .titleButtonNewGame{
+                    color: white;
+                    font-size: 2.5vmin;
+                    border-radius: 2vmin;
+                    background-color: #17212B;
+                    border: 1px solid white;
+                    box-shadow: 0 0 12px 2px hsl(0, 0%, 100%), 
+                                0 0 8px 2px hsl(0, 0%, 100%) inset;
+                    text-shadow: 0px 0px 10px white;
+                }
         .game .header .score{
             display: flex;
             flex-direction: row;
@@ -85,8 +97,8 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 18vmin;
-            width: 18vmin;
+            /* height: 18vmin;
+            width: 18vmin; */
             box-sizing: border-box;
             margin: 1vmin;
             background-color: #17212B;
@@ -122,8 +134,7 @@ body {
                 animation-fill-mode: forwards;
             }
             .game .field .cell .cell-text.highlight{
-                height: 18vmin;
-                width: 18vmin;
+                margin: 0;
             }
 
             .game .field .cell .cell-text[data-number='2']{
