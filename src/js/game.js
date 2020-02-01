@@ -124,6 +124,7 @@ class Game {
         for (let z = 0; z < 2; z++){
             this.spawnNumber();
         }
+        this.score = 0;
     }
 
     set score(value){
