@@ -60,11 +60,11 @@ class Game {
                 });
 
                 this.cell[i][k] = new CellText(cellElement, this);
-
             }
         }
+        this.resetGame();
 
-        window.onkeyup = function(e){
+        window.addEventListener('keyup', function(e){
             switch (e.keyCode){
                 case 38:
                     this.moveUp()
@@ -79,8 +79,20 @@ class Game {
                     this.moveRight()
                     break;
             }
-        }.bind(this);
+        }.bind(this));
 
+    }
+
+    resetGame(){
+        for (let i = 0; i < this.size; i++){
+            for (let k = 0; k < this.size; k++){
+                this.cell[i][k].value = '';
+            }
+        }
+
+        for (let z = 0; z < 2; z++){
+            this.spawnNumber();
+        }
     }
 
     set score(value){
