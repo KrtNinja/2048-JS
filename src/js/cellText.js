@@ -9,10 +9,8 @@ class CellText {
 
         
         if (Math.random() > 0.8){
-            this.value = Math.random() > 0.5 ? 4 : 2;
+            this.spawn();
         }
-
-        this.element.onclick = this.merge.bind(this);
     }
 
     get value(){
@@ -30,7 +28,20 @@ class CellText {
         this.value = '';
     }
 
-    merge(){
-        this.value *= 2;
+    merge(cellText){
+        this.value += cellText.value;
+        cellText.clear();
+    }
+
+    isSameTo(cellText){
+        return this.value == cellText.value;
+    }
+
+    spawn(){
+        this.value = Math.random() > 0.5 ? 4 : 2;
+    }
+
+    get isEmpty(){
+        return this.value == 0;
     }
 }

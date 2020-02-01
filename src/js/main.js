@@ -1,4 +1,4 @@
-let createAndAppend = function({tag, className, parentElement, value} = {tag : 'div', className, parentElement, value}){
+let createAndAppend = function({className, parentElement, value}, tag = 'div'){
     let element = document.createElement(tag);
     element.className = className;
     if (value){
@@ -9,4 +9,8 @@ let createAndAppend = function({tag, className, parentElement, value} = {tag : '
     return element;
 }
 
-new Game(document.body, 4);
+let randomInt = function (min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var game = new Game(document.body, 4);
