@@ -33,7 +33,7 @@ class Game {
             className: 'scoreText',
             parentElement: scoreElement
         });
-        let scoreNumberElement = createAndAppend({
+        this.scoreNumberElement = createAndAppend({
             className: 'scoreNumber',
             parentElement: scoreElement
         });
@@ -42,7 +42,6 @@ class Game {
 
         titleTextElement.innerHTML = '2048 NEON'
         scoreTextElement.innerHTML = 'Score ';
-        scoreNumberElement.innerHTML = this.score;
 
         let fieldElement = createAndAppend({
             className: 'field',
@@ -60,7 +59,7 @@ class Game {
                     parentElement: fieldElement
                 });
 
-                this.cell[i][k] = new CellText(cellElement);
+                this.cell[i][k] = new CellText(cellElement, this);
 
             }
         }
@@ -84,6 +83,19 @@ class Game {
 
     }
 
+    set score(value){
+        this._score = value;
+        this.scoreNumberElement.innerHTML = value;
+    }
+
+    get score(){
+        return this._score;
+    }
+
+    addScore(value){
+        this.score += value;
+    }
+
     spawnNumber(){
         let emptyCellText = [];
 
@@ -101,6 +113,10 @@ class Game {
         else{
             alert('You Lose!')
         }
+    }
+
+    onCellTextMerge(CellText){
+        
     }
 
     moveRight(){

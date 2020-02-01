@@ -1,7 +1,9 @@
 
 
 class CellText {
-    constructor(cellElement){
+    constructor(cellElement, game){
+        this.game = game;
+
         this.element = createAndAppend({
             className: 'cell-text',
             parentElement: cellElement
@@ -29,6 +31,10 @@ class CellText {
     }
 
     merge(cellText){
+        if (this.value){
+            this.game.addScore(this.value + cellText.value);
+        }
+        
         this.value += cellText.value;
         cellText.clear();
     }
