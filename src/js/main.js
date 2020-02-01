@@ -1,4 +1,4 @@
-let createAndAppend = function({tag, className, parentElement, value} = {tag: 'div', className, parentElement, value}){
+let createAndAppend = function({tag, className, parentElement, value} = {tag : 'div', className, parentElement, value}){
     let element = document.createElement(tag);
     element.className = className;
     if (value){

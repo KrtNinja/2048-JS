@@ -10,9 +10,41 @@ class Game {
             parentElement: gameFieldElement
         });
 
+        let titleElement = createAndAppend({
+            className: 'title',
+            parentElement: headerElement
+        });
+
+        let titleTextElement = createAndAppend({
+            className: 'titleText',
+            parentElement: titleElement
+        });
+
+        let titleButtonElement = createAndAppend({
+            className: 'titleButton',
+            parentElement: titleElement
+        });
+
+        let scoreElement = createAndAppend({
+            className: 'score',
+            parentElement: headerElement
+        });
+
+        let scoreTextElement = createAndAppend({
+            className: 'scoreText',
+            parentElement: scoreElement
+        });
+
+        let scoreNumberElement = createAndAppend({
+            className: 'scoreNumber',
+            parentElement: scoreElement
+        });
+
         this.score = 1234;
 
-        headerElement.innerHTML = 'Score:' + this.score;
+        titleTextElement.innerHTML = '2048 NEON'
+        scoreTextElement.innerHTML = 'Score ';
+        scoreNumberElement.innerHTML = this.score;
 
         let fieldElement = createAndAppend({
             className: 'field',

@@ -17,18 +17,58 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
     .game .header{
         height: 20vmin;
         width: 80vmin;
         padding: 2vmin;
-        font-size: 9vmin;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         background-color: #2B5278;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        border-bottom:1px solid white;
-
     }
+        .game .header .title{
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            font-size: 6vmin;
+            font-family: 'Digital', Arial;
+            color: white;
+            margin-bottom: 1vmin;
+        }
+            .game .header .title .titleText{
+                width: 50vmin;
+                text-shadow: 0px 0px 7px white;
+                padding-left: 5vmin;
+            }
+            .game .header .title .titleButton{
+                width: 24vmin;
+                background-color: #17212B;
+                border: white;
+            }
+        .game .header .score{
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            font-size: 3.5vmin;
+            font-family: 'Audiowide', Arial;
+            background-color: #17212B;
+            color: white;
+            border-radius: 5px;
+            border: 1px solid white;
+            box-shadow: 0 0 7px 5px hsl(0, 0%, 100%), 
+                        0 0 6px 4px hsl(0, 0%, 100%) inset;
+            text-shadow: 0px 0px 10px white;
+        }
+            .game .header .score .scoreText{
+                width: 20vmin;
+                border-right: 1px solid white;
+            }
+            .game .header .score .scoreNumber{
+                width: 54vmin;
+            }
+            
     .game .field{
         height: 80vmin;
         width: 80vmin;
@@ -58,10 +98,12 @@ body {
                 align-items: center;
                 justify-content: center;
                 border-radius: 1.5vmin;
+                font-family: 'Digital', Arial;
             }
             .game .field .cell .cell-text[data-number='2']{
                 font-size: 10vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(189, 100%, 71%);
                 color: hsl(189, 100%, 71%); 
                 border: 1px solid rgb(107, 233, 255);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -71,7 +113,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='4']{
                 font-size: 10vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(242, 100%, 85%);
                 color: rgb(178, 176, 255); 
                 border: 1px solid rgb(178, 176, 255);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -81,7 +124,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='8']{
                 font-size: 10vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(308, 100%, 73%);
                 color: rgb(255, 117, 237); 
                 border: 1px solid rgb(255, 117, 237);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -91,7 +135,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='16']{
                 font-size: 10vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(0, 100%, 66%);
                 color: rgb(255, 103, 103); 
                 border: 1px solid rgb(255, 103, 103);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -101,7 +146,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='32']{
                 font-size: 10vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(29, 89%, 47%);
                 color: rgb(228, 117, 13); 
                 border: 1px solid rgb(228, 117, 13);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -111,7 +157,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='64']{
                 font-size: 10vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(54, 89%, 47%);
                 color: rgb(228, 206, 13); 
                 border: 1px solid rgb(228, 206, 13);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -121,7 +168,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='128']{
                 font-size: 9.5vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(108, 71%, 39%);
                 color: rgb(57, 170, 29); 
                 border: 1px solid rgb(57, 170, 29);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -131,7 +179,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='256']{
                 font-size: 9.5vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(231, 88%, 48%);
                 color: rgb(15, 47, 230); 
                 border: 1px solid rgb(15, 47, 230);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -141,7 +190,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='512']{
                 font-size: 9.5vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(155, 100%, 50%);
                 color: rgb(10, 255, 149); 
                 border: 1px solid rgb(0, 255, 149);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -151,7 +201,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='1024']{
                 font-size: 8vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(268, 100%, 50%);
                 color: rgb(119, 0, 255); 
                 border: 1px solid rgb(119, 0, 255);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
@@ -161,7 +212,8 @@ body {
             }
             .game .field .cell .cell-text[data-number='2048']{
                 font-size: 6vmin;
-                font-family: 'Digital', Arial;
+                text-shadow:    0px 0px 2px white, 
+                                0px 0px 6px hsl(330, 100%, 50%);
                 color: rgb(255,0,128); 
                 border: 1px solid rgb(255,0,128);
                 box-shadow: 0 0 3px 1px hsl(0, 0%, 100%),
