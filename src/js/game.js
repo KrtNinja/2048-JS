@@ -1,49 +1,50 @@
 class Game {
     constructor(parentElement, size = 4) {
+        
         this.fieldSize = 80;
         this.size = size;
-        this.cellSize = (Math.floor(this.fieldSize / this.size) - 2)
+        this.cellSize = (this.fieldSize / this.size - 2)
 
-        let gameFieldElement = createAndAppend({
+        this.gameFieldElement = createAndAppend({
             className: 'game',
             parentElement
         });
 
-        let headerElement = createAndAppend({
+        this.headerElement = createAndAppend({
             className: 'header',
-            parentElement: gameFieldElement
+            parentElement: this.gameFieldElement
         });
 
-        let titleElement = createAndAppend({
+        this.titleElement = createAndAppend({
             className: 'title',
-            parentElement: headerElement
+            parentElement: this.headerElement
         });
         let titleTextElement = createAndAppend({
             className: 'titleText',
-            parentElement: titleElement
+            parentElement: this.titleElement
         });
-        let titleButtonElement = createAndAppend({
+        this.titleButtonElement = createAndAppend({
             className: 'titleButtons',
-            parentElement: titleElement
+            parentElement: this.titleElement
         });
         this.titleButtonNewGameElement = createAndAppend({
             className: 'titleButtonNewGame',
-            parentElement: titleButtonElement,
+            parentElement: this.titleButtonElement,
             value : 'New Game'
         }, 'button');
 
 
-        let scoreElement = createAndAppend({
+        this.scoreElement = createAndAppend({
             className: 'score',
-            parentElement: headerElement
+            parentElement: this.headerElement
         });
         let scoreTextElement = createAndAppend({
             className: 'scoreText',
-            parentElement: scoreElement
+            parentElement: this.scoreElement
         });
         this.scoreNumberElement = createAndAppend({
             className: 'scoreNumber',
-            parentElement: scoreElement
+            parentElement: this.scoreElement
         });
 
         this.score = 0;
@@ -52,12 +53,14 @@ class Game {
         titleTextElement.innerHTML = '2048 NEON'
         scoreTextElement.innerHTML = 'Score ';
 
-        let fieldElement = createAndAppend({
+        this.fieldElement = createAndAppend({
             className: 'field',
-            parentElement: gameFieldElement
+            parentElement: this.gameFieldElement
         });
 
         this.cell = [];
+
+        this.detectDevice();
 
         for (let i = 0; i < size; i++){
             this.cell[i] = [];
@@ -65,7 +68,7 @@ class Game {
                 
                 let cellElement = createAndAppend({
                     className: 'cell',
-                    parentElement: fieldElement
+                    parentElement: this.fieldElement
                 });
 
                 cellElement.style.width = this.cellSize + 'vmin';
@@ -74,8 +77,8 @@ class Game {
                 this.cell[i][k] = new CellText(cellElement, this);
             }
         }
-        this.resetGame();
 
+        //Движение элементов клавишами клавиатуры
         window.addEventListener('keyup', function(e){
             switch (e.keyCode){
                 case 38:
@@ -92,9 +95,63 @@ class Game {
                     break;
             }
         }.bind(this));
+        
+        //Движение элементов на мобильных устройствах свайпами
+        let initialPoint;
+        let finalPoint;
+        window.addEventListener('touchstart', function(event) {
+            initialPoint=event.changedTouches[0];
+        }, false);
+        window.addEventListener('touchend', function(event) {
+            finalPoint=event.changedTouches[0];
 
+            let xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+            let yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
+            if (xAbs > 20 || yAbs > 20) {
+                if (xAbs > yAbs) {
+                    if (finalPoint.pageX < initialPoint.pageX){
+                        this.game.moveLeft();
+                    }
+                    else{
+                        this.game.moveRight();
+                    }
+                }
+                else {
+                    if (finalPoint.pageY < initialPoint.pageY){
+                        this.game.moveUp();
+                    }
+                    else{
+                        this.game.moveDown();
+                    }
+                }
+            }
+        }, false);
+
+        this.resetGame();
     }
 
+    detectDevice(){
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            this.gameFieldElement.style.justifyContent = 'center';
+
+            this.headerElement.style.width = 95 + 'vmin';
+            this.headerElement.style.height = 25 + 'vmin';
+
+            this.titleElement.style.justifyContent = 'space-between';
+            this.titleElement.style.fontSize = 9 + 'vmin';
+
+            this.scoreElement.style.fontSize = 4.5 + 'vmin';
+
+            this.titleButtonElement.style.width = 30 + 'vmin';
+            this.titleButtonNewGameElement.style.fontSize = 3.5 + 'vmin';
+
+            this.fieldElement.style.width = 95 + 'vmin';
+            this.fieldElement.style.height = 95 + 'vmin';
+
+            this.fieldSize = 95;
+            this.cellSize = (this.fieldSize / this.size - 2);
+        }
+    }
     spawnNumber(){
         let emptyCellText = [];
 
